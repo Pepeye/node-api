@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 /**
  * API routes / endpoints
  */
-app.use('/todos', (req, res) => {
+app.post('/todos', (req, res) => {
   // console.log(req.body)
   let todo = new Todo({
     text: req.body.text
@@ -29,6 +29,15 @@ app.use('/todos', (req, res) => {
   todo
     .save()
     .then((doc) => res.send(doc))
+    .catch(err => res.status(400).send(err))
+})
+
+app.get('/todos', (req, res) => {
+  Todo
+    .find()
+    .then((todos) => {
+      res.send({ todos })
+    })
     .catch(err => res.status(400).send(err))
 })
 
