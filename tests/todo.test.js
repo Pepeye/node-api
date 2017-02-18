@@ -23,28 +23,25 @@ describe('STORMTROOPER TESTS SUITE', () => {
         .post('/todos')
         .send({ text })
 
-      console.dir({ status, body }, { colors: true, depth: 2 })
       expect(status).toBe(200)
       expect(body.text).toBe(text)
     })
 
-    it('should not create todo with invalid data', async () => {
-      let { status, body } = await request(app)
+    test('should not create todo with invalid data', async () => {
+      let { status } = await request(app)
         .post('/todos')
         .send({})
 
-      console.dir({ status, body }, { colors: true, depth: 2 })
       expect(status).toBe(400)
     })
   })
 
   describe('GET /todos', () => {
-    it('should get all todos', async () => {
+    test('should get all todos', async () => {
       let { status, body } = await request(app)
           .get('/todos')
-          .expect(200)
 
-      console.dir({ status, body }, { colors: true, depth: 2 })
+      expect(status).toBe(200)
       expect(body.todos.length).toBe(9)
     })
   })
