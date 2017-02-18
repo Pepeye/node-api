@@ -7,10 +7,11 @@
   "author": "Pepeye",
   "scripts": {
     "start": "DEBUG=stormtrooper* nodemon src/index.js --exec babel-node",
-    "seed": "node build/tasks/seed",
+    "db:clean": "node build/tasks/cleandb",
+    "db:seed": "node build/tasks/seed",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "jest --coverage",
-    "watch:test": "jest --watch --coverage"
+    "test:watch": "jest --watch --coverage"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -46,10 +47,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
       }
     },
     "verbose": true
