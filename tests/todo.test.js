@@ -24,15 +24,19 @@ describe('STORMTROOPER TESTS SUITE', () => {
         .send({ text })
 
       expect(status).toBe(200)
+      expect(typeof body).toBe('object')
       expect(body.text).toBe(text)
     })
 
     test('should not create todo with invalid data', async () => {
-      let { status } = await request(app)
+      let { status, body } = await request(app)
         .post('/todos')
         .send({})
 
       expect(status).toBe(400)
+      expect(typeof body).toBe('object')
+      expect(Object.keys(body)).toContain('errors')
+      expect(body.errors).not.toBeUndefined()
     })
   })
 
@@ -42,6 +46,7 @@ describe('STORMTROOPER TESTS SUITE', () => {
           .get('/todos')
 
       expect(status).toBe(200)
+      expect(typeof body).toBe('object')
       expect(body.todos.length).toBe(9)
     })
   })
