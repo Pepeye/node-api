@@ -6,7 +6,7 @@
   "description": "Node MongoDB and Authentication",
   "author": "Pepeye",
   "scripts": {
-    "start": "nodemon --watch src --exec babel-node",
+    "start": "DEBUG=stormtrooper* nodemon src/index.js --exec babel-node",
     "seed": "node build/tasks/seed",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "jest --coverage",
@@ -31,8 +31,12 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "body-parser": "^1.16.1",
+    "debug": "^2.6.1",
+    "express": "^4.14.1",
     "mongodb": "^2.2.24",
-    "mongoose": "^4.8.3"
+    "mongoose": "^4.8.3",
+    "morgan": "^1.8.1"
   },
   "jest": {
     "testEnvironment": "node",
