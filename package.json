@@ -1,0 +1,52 @@
+{
+  "name": "stormtrooper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "Node MongoDB and Authentication",
+  "author": "Pepeye",
+  "scripts": {
+    "start": "nodemon --watch src --exec babel-node",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "test": "jest --coverage",
+    "watch:test": "jest --watch --coverage"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^18.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.15.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-promise": "^3.4.2",
+    "eslint-plugin-standard": "^2.0.1",
+    "flow-bin": "^0.39.0",
+    "jest": "^18.1.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "mongodb": "^2.2.24",
+    "mongoose": "^4.8.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/*.js",
+      "tests/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "verbose": true
+  }
+}
