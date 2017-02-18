@@ -7,6 +7,7 @@
   "author": "Pepeye",
   "scripts": {
     "start": "nodemon --watch src --exec babel-node",
+    "seed": "node build/tasks/seed",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "jest --coverage",
     "watch:test": "jest --watch --coverage"

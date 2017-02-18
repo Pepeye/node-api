@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Pepeye",
+    "email": "sam@stratbox.io",
+    "active": true,
+    "roles": [
+      "admin",
+      "users"
+    ]
+  }
+]
