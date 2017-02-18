@@ -10,6 +10,8 @@
     "db:clean": "node build/tasks/cleandb",
     "db:seed": "node build/tasks/seed",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "spec": "mocha './tests/**/*.spec.js' --opts 'tests/mocha.opts'",
+    "spec:watch": "yarn run spec --watch",
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage"
   },
@@ -29,8 +31,10 @@
     "eslint-plugin-standard": "^2.0.1",
     "flow-bin": "^0.39.0",
     "jest": "^18.1.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "supertest-as-promised": "^4.0.2"
   },
   "dependencies": {
     "body-parser": "^1.16.1",
@@ -41,10 +45,20 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverageFrom": [
-      "src/*.js",
-      "tests/*.js"
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "./dist"
     ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "html"
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "^mongoose$": "<rootDir>/node_modules/mongoose"
+    },
     "coverageThreshold": {
       "global": {
         "branches": 75,

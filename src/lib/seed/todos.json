@@ -6,6 +6,6 @@
   { "text": "Learn React native", "completed": false },
   { "text": "Develop serverless graphql/relay starter ", "completed": false },
   { "text": "Learn GraphQL", "completed": true, "completedAt": 1456358400  },
-  { "text": "Learn GraphQL", "completed": true, "completedAt": 1456358435  },
+  { "text": "Learn React", "completed": true, "completedAt": 1456358435  },
   { "text": "Learn Relay", "completed": true, "completedAt": 1463409033  }
 ]
