@@ -2,10 +2,11 @@ const app = require('../server')
 const request = require('supertest')
 // const request = require('supertest-as-promised')
 const Todo = require('./model')
-const { todos } = require('../../lib/seed')
+const todos = require('./todos.seed.json')
 
 describe('STORMTROOPER TESTS SUITE', () => {
-  describe('POST /todos', () => {
+  describe('# POST /todos', () => {
+    // run before each POST /todos test
     beforeEach((done) => {
       Todo
         .remove({})
@@ -40,7 +41,7 @@ describe('STORMTROOPER TESTS SUITE', () => {
     })
   })
 
-  describe('GET /todos', () => {
+  describe('# GET /todos', () => {
     test('should get all todos', async () => {
       let { status, body } = await request(app)
           .get('/todos')
