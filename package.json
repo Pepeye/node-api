@@ -6,14 +6,14 @@
   "description": "Node MongoDB and Authentication",
   "author": "Pepeye",
   "scripts": {
-    "start": "DEBUG=stormtrooper* nodemon src/index.js --exec babel-node",
+    "start": "NODE_ENV=dev DEBUG=stormtrooper* nodemon src/index.js --exec babel-node",
     "db:clean": "node build/tasks/cleandb",
     "db:seed": "node build/tasks/seed",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "spec": "mocha './tests/**/*.spec.js' --opts 'tests/mocha.opts'",
     "spec:watch": "yarn run spec --watch",
-    "test": "jest --coverage --forceExit",
-    "test:watch": "jest --watch --coverage"
+    "test": "NODE_ENV=test jest --coverage --forceExit",
+    "test:watch": "NODE_ENV=test jest --watch --coverage"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
