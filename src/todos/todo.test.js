@@ -1,16 +1,16 @@
 const app = require('../server')
 const request = require('supertest')
 // const request = require('supertest-as-promised')
-const Model = require('./model')
+const Todo = require('./model')
 const { todos } = require('../../lib/seed')
 
 describe('STORMTROOPER TESTS SUITE', () => {
   describe('POST /todos', () => {
     beforeEach((done) => {
-      Model
+      Todo
         .remove({})
         .then(() => {
-          return Model
+          return Todo
             .insertMany(todos)
             .then((docs) => done())
         })
