@@ -1,7 +1,7 @@
 // const mongoose = require('../../src/lib/db')
-const seed = require('../../src/lib/seed')
-const { Todo, User } = require('../../src/models')
-const { jsonprint } = require('../../src/lib/helpers');
+const seed = require('../../lib/seed')
+const { jsonprint } = require('../../lib/helpers')
+const { Todo, User } = require('../../src/models');
 
 (() => {
   User

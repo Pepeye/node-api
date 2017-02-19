@@ -1,5 +1,5 @@
 // const mongoose = require('mongoose')
-const mongoose = require('../lib/db')
+const mongoose = require('../../lib/db')
 
 const Todo = mongoose.model('Todo', {
   text: { type: String, required: true, trim: true },
