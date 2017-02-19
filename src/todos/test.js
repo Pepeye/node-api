@@ -1,8 +1,8 @@
-const { app } = require('../src/server')
+const app = require('../src')
 const request = require('supertest')
 // const request = require('supertest-as-promised')
-const { Todo } = require('../src/models')
-const { todos } = require('../lib/seed')
+const { Todo } = require('./model')
+const { todos } = require('../../lib/seed')
 
 describe('STORMTROOPER TESTS SUITE', () => {
   describe('POST /todos', () => {
