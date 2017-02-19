@@ -1,5 +1,5 @@
 const { Resource } = require('../../lib/resources')
-const schema = require('./schema')
+const schema = require('./model')
 
 class Todo extends Resource {}
 

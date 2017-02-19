@@ -1,5 +1,6 @@
-const { Controller, Resource } = require('../../lib/resources')
+const { Controller } = require('../../lib/resources')
+const resource = require('./resource')
 
 class TodoController extends Controller {}
 
-module.exports = new TodoController(Resource)
+module.exports = new TodoController(resource)

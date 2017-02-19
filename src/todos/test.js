@@ -1,29 +1,29 @@
-const app = require('../src')
+const app = require('../server')
 const request = require('supertest')
 // const request = require('supertest-as-promised')
-const { Todo } = require('./model')
+const Model = require('./model')
 const { todos } = require('../../lib/seed')
 
 describe('STORMTROOPER TESTS SUITE', () => {
   describe('POST /todos', () => {
     beforeEach((done) => {
-      Todo
+      Model
         .remove({})
         .then(() => {
-          return Todo
+          return Model
             .insertMany(todos)
-            .then(() => done())
+            .then((docs) => done())
         })
         .catch(err => done(err))
     })
 
     test('should create a new todo', async () => {
-      let text = 'Something to do'
+      let text = 'Fix this Jest Test'
       let { status, body } = await request(app)
         .post('/todos')
         .send({ text })
 
-      expect(status).toBe(200)
+      expect(status).toBe(201)
       expect(typeof body).toBe('object')
       expect(body.text).toBe(text)
     })
@@ -47,7 +47,7 @@ describe('STORMTROOPER TESTS SUITE', () => {
 
       expect(status).toBe(200)
       expect(typeof body).toBe('object')
-      expect(body.todos.length).toBe(9)
+      expect(body.docs.length).toBe(9)
     })
   })
 })

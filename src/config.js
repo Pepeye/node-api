@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3000
 const HOST = process.env.HOST || 'localhost'
 
 const config = {
+  name: APP_NAME,
   environment: ENV,
   server: {
     port: PORT,

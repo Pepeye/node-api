@@ -4,13 +4,17 @@ const router = new Router()
 /**
  * Import models
  */
-const user = require('./user').routes
-const todo = require('./todo').routes
+// const user = require('./users').routes
+const todo = require('./todos').Routes
 
 /**
  * Define routes
  */
-router.use('/user', user)
-router.use('/todo', todo)
+router.route('/').get((req, res) => {
+  res.json({ message: 'Welcome Stormtrooper!' })
+})
+
+// router.use('/user', user)
+router.use('/todos', todo)
 
 module.exports = router
