@@ -1,9 +1,10 @@
-process.env.MONGO_URI = `mongodb://localhost:27017/stormtrooper-${process.env.NODE_ENV}`
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const debug = require('debug')('stormtrooper:server')
+
+// set mongodb URI string
+process.env.MONGO_URI = `mongodb://localhost:27017/stormtrooper-${process.env.NODE_ENV}`
 
 // const mongoose = require('./lib/db')
 const { Todo, User } = require('./models')
