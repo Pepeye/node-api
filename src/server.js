@@ -5,24 +5,26 @@ const config = require('./config')
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
+const csrf = require('csurf')
 const compression = require('compression')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const debug = require('debug')(`${config.name}:server`)
 
+const debug = require('debug')(`${config.name}:server`)
 const routes = require('./routes')
-// const mongoose = require('./lib/db')
-// const { Todo } = require('./models')
+
 const app = express()
+
 /**
  * Configure middleware
  */
-debug(process.env.NODE_ENV)
-debug(process.env.MONGO_URI)
+debug(config.environment)
+debug(config.mongo.url)
 debug('configuring middleware')
 
 app.use(helmet())
 app.use(cors())
+app.use(csrf())
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
