@@ -38,8 +38,11 @@
   },
   "dependencies": {
     "body-parser": "^1.16.1",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
     "debug": "^2.6.1",
     "express": "^4.14.1",
+    "helmet": "^3.4.0",
     "mongoose": "^4.8.3",
     "morgan": "^1.8.1"
   },

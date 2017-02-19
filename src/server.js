@@ -1,6 +1,9 @@
 const express = require('express')
+const helmet = require('helmet')
+const cors = require('cors')
+const compression = require('compression')
 const bodyParser = require('body-parser')
-const logger = require('morgan')
+const morgan = require('morgan')
 const debug = require('debug')('stormtrooper:server')
 
 // set mongodb URI string
@@ -16,7 +19,10 @@ const app = express()
 debug(process.env.NODE_ENV)
 debug(process.env.MONGO_URI)
 debug('configuring middleware')
-app.use(logger('dev'))
+app.use(helmet())
+app.use(cors())
+app.use(compression())
+app.use(morgan('dev'))
 app.use(bodyParser.json())
 
 /**
