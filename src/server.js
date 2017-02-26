@@ -29,11 +29,17 @@ app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(morgan('dev'))
-app.use('/', routes)
 
 /**
  * API routes / endpoints
  */
+ /**
+  * Define routes
+  */
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome Stormtrooper!' })
+})
+
 app.use('/', routes)
 
 module.exports = app
