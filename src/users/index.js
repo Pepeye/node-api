@@ -1,5 +1,4 @@
-const User = require('./user')
+const User = require('./resource')
+const Routes = require('./router')
 
-module.exports = {
-  User
-}
+module.exports = { User, Routes }

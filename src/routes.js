@@ -4,10 +4,10 @@ const router = new Router()
 /**
  * Import models
  */
-// const user = require('./users').routes
+const user = require('./users').Routes
 const todos = require('./todos').Routes
 
-// router.use('/user', user)
+router.use('/users', user)
 router.use('/todos', todos)
 
 module.exports = router
