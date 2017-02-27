@@ -9,6 +9,6 @@ router.route('/')
 router.route('/:id')
   .put((...args) => controller.update(...args))
   .get((...args) => controller.findById(...args))
-  .delete((...args) => controller.remove(...args))
+  .delete((...args) => controller.delete(...args))
 
 module.exports = router
