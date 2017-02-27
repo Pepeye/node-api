@@ -68,6 +68,25 @@ User.methods.generateAuthToken = function () {
   })
 }
 
-// TODO: User.findByToken
+/**
+ * Statics
+ */
+
+User.statics.findByToken = function (token) {
+  let User = this
+  let decoded
+
+  try {
+    decoded = jwt.verify(token, 'process.env.SECRET')
+  } catch (err) {
+
+  }
+
+  return User.findOne({
+    '_id': decoded._id,
+    'tokens.token': token,
+    'tokens.access': 'local'
+  })
+}
 
 module.exports = mongoose.model('User', User)

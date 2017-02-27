@@ -11,4 +11,7 @@ router.route('/:id')
   .get((...args) => controller.findById(...args))
   .delete((...args) => controller.remove(...args))
 
+router.route('/me')
+  .get((...args) => controller.me(...args))
+
 module.exports = router

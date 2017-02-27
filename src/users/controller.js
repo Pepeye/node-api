@@ -7,9 +7,21 @@ class UserController extends Controller {
   create (req, res) {
     this.resource.create(req.body)
       .then(({ user, token }) => {
-        res.header('X-Auth-Token', `Bearer ${token}`).send(user)
+        res.header('X-Auth-Token', token).send(user)
       })
       .catch(err => res.status(400).send(err))
+  }
+
+  // findById (req, res, next) {
+  me (req, res) {
+    let token = req.header('X-Auth-Token')
+    return this.resource.findByToken(token)
+      .then((user) => {
+        if (!user) { return res.status(404).end() }
+        return res.status(200).send(user)
+      })
+      .catch(err => res.status(400).send(err))
+      // .catch(err => next(err))
   }
 }
 
