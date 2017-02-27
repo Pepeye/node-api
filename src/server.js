@@ -30,7 +30,10 @@ app.use(cors())
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(morgan('dev'))
+
+if (config.environment !== 'test') {
+  app.use(morgan('dev'))
+}
 
 /**
  * API routes / endpoints

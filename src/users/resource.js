@@ -18,6 +18,11 @@ class User extends Resource {
     return this.Schema
       .findByToken(token)
   }
+
+  findByCredentials (email, password) {
+    return this.Schema
+      .findByCredentials(email, password)
+  }
 }
 
 module.exports = new User(schema)

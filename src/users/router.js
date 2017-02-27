@@ -7,7 +7,12 @@ router.route('/')
   .get((...args) => controller.find(...args))
   .post((...args) => controller.create(...args))
 
-router.get('/me', authenticate, (...args) => controller.me(...args))
+router.route('/login')
+  .post((...args) => controller.login(...args))
+
+router
+  .get('/me', authenticate, (...args) => controller.me(...args))
+
 // router.route('/me')
 //   .get((...args) => controller.me(...args))
 
