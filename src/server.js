@@ -15,6 +15,8 @@ const routes = require('./routes')
 
 const app = express()
 
+process.env.SECRET = 'somesupersecretpasswordthatishardtoguess'
+
 /**
  * Configure middleware
  */

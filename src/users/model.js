@@ -58,7 +58,7 @@ User.methods.generateAuthToken = function () {
   let user = this
   let access = 'local'
   let params = { _id: user._id.toHexString(), access }
-  let token = jwt.sign(params, 'process.env.SECRET').toString()
+  let token = jwt.sign(params, process.env.SECRET).toString()
 
   user.tokens.push({ access, token })
   // return promise
@@ -77,9 +77,9 @@ User.statics.findByToken = function (token) {
   let decoded
 
   try {
-    decoded = jwt.verify(token, 'process.env.SECRET')
+    decoded = jwt.verify(token, process.env.SECRET)
   } catch (err) {
-
+    return Promise.reject()
   }
 
   return User.findOne({

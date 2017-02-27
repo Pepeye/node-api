@@ -18,9 +18,10 @@ class UserController extends Controller {
     return this.resource.findByToken(token)
       .then((user) => {
         if (!user) { return res.status(404).end() }
+        // if (!user) { return Promise.reject() }
         return res.status(200).send(user)
       })
-      .catch(err => res.status(400).send(err))
+      .catch(err => res.status(401).send(err))
       // .catch(err => next(err))
   }
 }
