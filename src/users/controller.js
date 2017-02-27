@@ -12,17 +12,8 @@ class UserController extends Controller {
       .catch(err => res.status(400).send(err))
   }
 
-  // findById (req, res, next) {
   me (req, res) {
-    let token = req.header('X-Auth-Token')
-    return this.resource.findByToken(token)
-      .then((user) => {
-        if (!user) { return res.status(404).end() }
-        // if (!user) { return Promise.reject() }
-        return res.status(200).send(user)
-      })
-      .catch(err => res.status(401).send(err))
-      // .catch(err => next(err))
+    res.status(200).send(req.user)
   }
 }
 
