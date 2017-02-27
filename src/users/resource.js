@@ -13,6 +13,11 @@ class User extends Resource {
           })
       })
   }
+
+  findByToken (token) {
+    return this.Schema
+      .findByToken(token)
+  }
 }
 
 module.exports = new User(schema)
