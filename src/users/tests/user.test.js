@@ -58,4 +58,34 @@ describe('[STORMTROOPER]: USERS Tests', () => {
       expect(status).toBe(401)
     })
   })
+
+  describe('POST /users/login', () => {
+    test('should login user and return auth token', async () => {
+      let { status, headers, body } = await request(app)
+        .post('/users/login')
+        .send({
+          email: users[0].email,
+          password: users[0].password
+        })
+
+      expect(status).toBe(200)
+      expect(typeof body).toBe('object')
+      expect(headers['x-auth-token']).toBeDefined()
+      expect(headers['x-auth-token']).toBe(users[0].tokens[0].token)
+      expect(body._id).toBe(users[0]._id.toHexString())
+      expect(body.email).toBe(users[0].email)
+    })
+
+    test('should reject invalid login', async () => {
+      let { status, headers } = await request(app)
+        .post('/users/login')
+        .send({
+          email: users[0].email,
+          password: 'wrongpassword'
+        })
+
+      expect(status).toBe(400)
+      expect(headers['x-auth-token']).toBeUndefined()
+    })
+  })
 })
